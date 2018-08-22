@@ -1,2 +1,2 @@
 all:
-	g++ MetodosDeIntegracion.cpp main.cpp -o main.out -std=c++14 -larmadillo -llapack -lblas
+	g++ src/MetodosDeIntegracion.cpp src/main.cpp -o obj/main.out -std=c++14 -larmadillo -llapack -lblas

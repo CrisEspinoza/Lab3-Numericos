@@ -13,19 +13,20 @@ using namespace arma;
 
 int main(int argc, char *argv[])
 {
-  int intervaloMenor, intervaloMayor, tolerancia, c;
+  int c;
+  long double tolerancia, intervaloMenor, intervaloMayor;
 
   while ((c = getopt (argc, argv, "t:a:b:")) != -1)
       switch (c)
         {
         case 't':
-          sscanf(optarg, "%d", &tolerancia);
+          sscanf(optarg, "%Lf",&tolerancia);
           break;
         case 'a':
-          sscanf(optarg, "%d", &intervaloMenor);
+          sscanf(optarg, "%Lf", &intervaloMenor);
           break;
         case 'b':
-          sscanf(optarg, "%d", &intervaloMayor);
+          sscanf(optarg, "%Lf", &intervaloMayor);
           break;
           break;
         case '?':
@@ -42,9 +43,9 @@ int main(int argc, char *argv[])
           abort ();
         }
 
-  printf("intervaloMenor : %d \n", intervaloMenor);
-  printf("intervaloMayor : %d \n", intervaloMayor);
-  printf("tolerancia : %d \n", tolerancia);
+  cout<< "intervaloMenor: "<< intervaloMenor<<endl;
+  cout<< "intervaloMayor: "<< intervaloMayor<<endl;
+  cout<< "tolerancia: "<< tolerancia<<endl;
 
   menu (intervaloMenor,intervaloMayor,tolerancia);
 
