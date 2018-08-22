@@ -14,16 +14,16 @@ long double MetodosDeIntegracion::formTrapecio(long double intervaloMenor, long 
 long double MetodosDeIntegracion::formSimpson13(long double intervaloMenor, long double intervaloMayor)
 {
 
-	long double punto1 = intervaloMenor + ( (intervaloMenor+intervaloMayor) / 3.0) ;
+	long double punto1 = (intervaloMayor+intervaloMenor) / 2.0  ;
 
-	long double valorIntegral = ((intervaloMayor-intervaloMenor) / 3.0 ) * ( func1(intervaloMenor) + (4.0 * func1 (punto1) ) + func1(intervaloMayor) );
+	long double valorIntegral = ((intervaloMayor-intervaloMenor) / 6.0 ) * ( func1(intervaloMenor) + (4.0 * func1 (punto1) ) + func1(intervaloMayor) );
 
 	return valorIntegral;
 }
 
 long double MetodosDeIntegracion::formSimpson38(long double intervaloMenor, long double intervaloMayor)
 {
-	long double distancia = ( (intervaloMenor+intervaloMayor)/4.0) ;
+	long double distancia = ( (intervaloMayor-intervaloMenor)/3.0) ;
 	long double punto1 = intervaloMenor + distancia;
 	long double punto2 = intervaloMenor + ( 2 * distancia );
 
