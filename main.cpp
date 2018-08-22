@@ -3,67 +3,50 @@
 
 #define  ARMA_DONT_USE_WRAPPER
 #define  ARMA_USE_LAPACK
+
 #include <armadillo>
+#include "menu.cpp"
 
 using namespace std;
 using namespace arma; 
 
 
-int main()
+int main(int argc, char *argv[])
 {
+  int intervaloMenor, intervaloMayor, tolerancia, c;
 
-  int bandera = 0;
-  int opcion;
+  while ((c = getopt (argc, argv, "t:a:b:")) != -1)
+      switch (c)
+        {
+        case 't':
+          sscanf(optarg, "%d", &tolerancia);
+          break;
+        case 'a':
+          sscanf(optarg, "%d", &intervaloMenor);
+          break;
+        case 'b':
+          sscanf(optarg, "%d", &intervaloMayor);
+          break;
+          break;
+        case '?':
+          if (optopt == 't' || optopt == 'a' || optopt == 'b')
+              fprintf (stderr, "Opcion -%c requiere un argumento.\n", optopt);
+          else if (isprint (optopt))
+              fprintf (stderr, "Opcion desconocida `-%c'.\n", optopt);
+          else
+              fprintf (stderr,
+                   "Opcion con caracter desconocido `\\x%x'.\n",
+                   optopt);
+          return 1;
+        default:
+          abort ();
+        }
 
-   // Menu (UX)
-   do
-   {
-    cout <<"\n   1. Comenzar parte 1 del laboratorio" << endl;
-    cout <<"\n   2. Reiniciar programa" << endl;
-    cout <<"\n   3. Creditos" << endl;
-    cout <<"\n   4. Salir" << endl;
-    cout <<"\n   Introduzca opcion (1-4): "; 
+  printf("intervaloMenor : %d \n", intervaloMenor);
+  printf("intervaloMayor : %d \n", intervaloMayor);
+  printf("tolerancia : %d \n", tolerancia);
 
-    scanf( "%d", &opcion );
-
-    /* Inicio del anidamiento */
-
-    switch ( opcion )
-       {
-       case 1:
-              if(bandera == 1 )
-              {
-                cout<<"Ya realiza la parte 1 del laboratorio prosiva con la parte numero dos "<<endl;
-                break;
-              }
-              
-              // Liberando opcion 2
-              bandera = 1;
-
-              break;
-
-       case 2: 
-               if(bandera == 0 )
-               {
-                  cout<<"Debe ocupar al menos en una oportunidad el programa para poder reiniciarlo"<<endl;
-                  break;
-               }
-               
-               cout<< " * Programa Reinciado * \n ";
-               bandera = 0;
-               break;
-
-       case 3: cout <<" * Autor: Cristian Espinoza \n "<< endl;
-               cout <<" * Universidad santiago de chile \n"<< endl;
-               break;
-       default:
-               if(opcion != 4)
-               cout <<"Esta opcion no esta permitida.\n"<< endl;
-               break;
-      }
-
-    }while(opcion!=4);
-
+  menu (intervaloMenor,intervaloMayor,tolerancia);
 
   return 0;
 }
