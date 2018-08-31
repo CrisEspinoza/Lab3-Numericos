@@ -5,7 +5,7 @@
 #define  ARMA_USE_LAPACK
 
 #include <armadillo>
-#include "menu.cpp"
+#include "MetodosDeIntegracion.h"
 
 using namespace std;
 using namespace arma; 
@@ -14,7 +14,9 @@ using namespace arma;
 int main(int argc, char *argv[])
 {
   int c;
+  double puntos, Radio,A,te, constante;
   long double tolerancia, intervaloMenor, intervaloMayor;
+  MetodosDeIntegracion inter;
 
   while ((c = getopt (argc, argv, "t:a:b:")) != -1)
       switch (c)
@@ -43,11 +45,18 @@ int main(int argc, char *argv[])
           abort ();
         }
 
+  te = 50.0;
+  puntos = 11.0;
+  Radio = 1.0;
+  constante = -50.0;
   cout<< "intervaloMenor: "<< intervaloMenor<<endl;
   cout<< "intervaloMayor: "<< intervaloMayor<<endl;
   cout<< "tolerancia: "<< tolerancia<<endl;
+  cout<< "puntos: "<< puntos<<endl;
+  cout<< "temperatura inicial: "<< te<<endl;
+  cout<< "Radio: "<< Radio<<endl;
 
-  menu (intervaloMenor,intervaloMayor,tolerancia);
+  inter.menu(intervaloMenor,intervaloMayor,tolerancia,puntos,te,Radio,constante);
 
   return 0;
 }

@@ -28,6 +28,10 @@ class MetodosDeIntegracion
 		long double ToleranciaTrapecio(long double intervaloMenor, long double intervaloMayor, long double tolerancia);
 		long double ToleranciaSimpson13(long double intervaloMenor, long double intervaloMayor, long double tolerancia);
 		long double ToleranciaSimpson38(long double intervaloMenor, long double intervaloMayor, long double tolerancia);
+		int menu (long double intervaloMenor, long double intervaloMayor, long double tolerancia, double puntos , double te, double Radio, double constante);
+		mat createMatrizA(double puntos);
+		mat createMatrizB(double puntos, double c,double te, double dr);
+		void escribirArchivo(char* archivo,mat temperaturas, double te);
 };
 
 #endif
